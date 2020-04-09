@@ -7,8 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    hey = '"Bien sûr mon poussin ! La voici : 7 cité Paradis, 75010 Paris"'
-    return render_template('index.html', exact=hey)
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run()
