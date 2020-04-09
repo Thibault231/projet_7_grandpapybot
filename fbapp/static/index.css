@@ -1,0 +1,100 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: #181818;
+    height : auto;
+}
+
+
+header
+{
+    min-height : 20%;
+    background-color: rgba(22, 56, 119, 0.8);
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+#Title1
+{
+    text-align: center;
+}
+
+h1
+{
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 3em;
+}
+
+main
+{
+    min-height : 50%;
+    margin: 10px 0px 20px 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+main section
+{
+    width: 50%;
+}
+
+#papyquestion
+{
+    width: 80%;
+    border: inset;
+    resize: none;
+    background-color: rgba(52, 126, 161, 0.26);
+}
+
+.HistoryBox 
+{
+    width: 80%;
+    border: 2px outset;
+    background-color: rgba(52, 126, 161, 0.26);
+    margin-top: 10px;
+}
+
+#loading
+{
+    display: none;
+}
+
+.ExactAnswer
+{
+    display: none;
+}
+
+.MapGoogle
+{
+    display: none;
+}
+
+#map
+{
+    height: 400px;
+    width: 600px;
+}
+
+.AdditionalAnswer
+{
+    display: none;
+}
+
+footer
+{
+    min-height : 10%;
+    text-align: center;
+    background-color: rgba(22, 56, 119, 0.8);
+}
+
+@media screen and (max-width: 767px) {
+    #logo
+    {
+        display: none;
+    }
+}

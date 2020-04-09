@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>       
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8"/> 
+
+        <meta name="description" content="website, encyclopedia, granpapybot, AJAX" />
+        <meta name="author" content="salgues231">
+        
+        <link href="{{ url_for('static', filename='book.gif') }}" rel="icon" type="image/gif" />
+        <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>GranPapy Bot</title>
+
+    </head>
+
+  <body>
+    <header class="row">
+            <p class="col-lg-2" id="logo"><img src="./static/grandpapy.png" alt="logo grandpapy"></p>
+            <div class="col-sm-12 col-lg-10" id="Title1">
+                <h1>Bienvenue chez GranPapy Bot</h1>
+                <p>Posez les questions que vous désirez à PapyBot. Il vous répondra avec précision, plus...quelques histoires supplémentaires.</p>
+                </br>
+            </div>
+    </header>
+
+    <main class="row">
+        <section class="col-xs-8 col-sm=8 col-lg-6" id="question">
+            <h2>Hey Papybot j'ai une super question pour toi!</h2>
+            <form class="MyQuestion">
+                <label for="papyquestion">Ecrivez votre question ci-dessous</label>
+                <br/>
+                <textarea type="text" name="papyquestion" id="papyquestion" rows='6'>Voici ma question</textarea>
+                <br/>
+                <button id="validate" type="button">Soumettre ma question</button>
+            </form>
+            <div class="HistoryBox">
+                <p>Retrouvez l'historique de vos questions ici</p>
+            </div>
+        </section>
+
+        <section class="col-xs-8 col-sm=8 col-lg-6" id="answer">
+            <article>
+                <h2>Regarde par ici pour consulter la réponse de Grand PapyBot.</h2>
+                <p id="loading"><img src="loading.gif" alt="loading gif picture"></p>
+                <p class="ExactAnswer"> {{exact}} </p>
+            </article>
+            <aside class="MapGoogle">
+                <p>Pour mieux te rendre compte regarde la carte ci-dessous: </p>
+                <div id="map"></div>  
+            </aside>
+            <aside class="AdditionalAnswer">
+                <p class="PapyHistory"> Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ?
+                     La cité Paradis est une voie publique située dans le 10e arrondissement de Paris. Elle est en forme de té,
+                      une branche débouche au 43 rue de Paradis, la deuxième au 57 rue d'Hauteville et la troisième en impasse.
+                      <a href="https://fr.wikipedia.org/wiki/OpenClassrooms" target="_blank">[En savoir plus sur Wikipedia]</a></p>
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        <p>Thibault SALGUES</p>
+        <p>Github link</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63EmB7d3J1w_6axs28keyc0tVaxhsnIA&callback=initMap"
+    async defer></script>
+    <script src="./static/index.js"></script>
+  </body>
+</html>
+
+
+
