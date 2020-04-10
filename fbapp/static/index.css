@@ -13,11 +13,9 @@ header
     min-height : 20%;
     background-color: rgba(22, 56, 119, 0.8);
     text-align: center;
-    display: flex;
-    flex-direction: row;
 }
 
-#Title1
+#title1
 {
     text-align: center;
 }
@@ -34,8 +32,6 @@ main
 {
     min-height : 50%;
     margin: 10px 0px 20px 0px;
-    display: flex;
-    flex-direction: row;
 }
 
 main section
@@ -43,34 +39,25 @@ main section
     width: 50%;
 }
 
-#papyquestion
-{
+#text-question{
     width: 80%;
     border: inset;
     resize: none;
     background-color: rgba(52, 126, 161, 0.26);
 }
 
-.HistoryBox 
-{
+.history-box {
     width: 80%;
     border: 2px outset;
     background-color: rgba(52, 126, 161, 0.26);
     margin-top: 10px;
 }
 
-#loading
-{
+#loading{
     display: none;
 }
 
-.ExactAnswer
-{
-    display: none;
-}
-
-.MapGoogle
-{
+#map_answer{
     display: none;
 }
 
@@ -80,13 +67,11 @@ main section
     width: 600px;
 }
 
-.AdditionalAnswer
-{
+#wiki_answer{
     display: none;
 }
 
-footer
-{
+footer{
     min-height : 10%;
     text-align: center;
     background-color: rgba(22, 56, 119, 0.8);
