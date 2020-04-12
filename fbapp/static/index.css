@@ -7,7 +7,6 @@ html, body {
     height : auto;
 }
 
-
 header
 {
     min-height : 20%;
@@ -46,29 +45,17 @@ main section
     background-color: rgba(52, 126, 161, 0.26);
 }
 
-.history-box {
+.history_box {
     width: 80%;
     border: 2px outset;
     background-color: rgba(52, 126, 161, 0.26);
     margin-top: 10px;
 }
 
-#loading{
-    display: none;
-}
-
-#map_answer{
-    display: none;
-}
-
 #map
 {
     height: 400px;
     width: 600px;
-}
-
-#wiki_answer{
-    display: none;
 }
 
 footer{

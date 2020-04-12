@@ -1,21 +1,24 @@
 # coding: utf-8
 from flask import Flask, render_template, request
-from fbapp.static.parser import wiki_parsing, creating_map_infos
-
+from fbapp.static.parser import Answer
 
 app = Flask(__name__)
+history=[]
 
 @app.route('/', methods=["GET", "POST"])
 def index():
+    
     if request.method == 'POST':
-        MAP_KEY = "AIzaSyA63EmB7d3J1w_6axs28keyc0tVaxhsnIA"
-        text_question = request.form['text-question']
-        adress_answer, lat_answer, lng_answer = creating_map_infos(text_question, MAP_KEY)
-        url_answer, summary_answer = wiki_parsing(adress_answer)
-        return render_template('index.html', summary=summary_answer, url=url_answer,
-         adress_ans=adress_answer, lat_ans=lat_answer, lng_ans=lng_answer)
+        question = Answer()
+        question.text_question = request.form['text-question']
+        history.append(question.text_question)
+        question.wiki_parsing()
+        question.creating_map_infos()
+        return render_template('response.html', summary=question.summary_answer, url=question.url_answer,
+         adress_ans=question.adress_answer, lat_ans=question.lat_answer, lng_ans=question.lng_answer,
+         history_list=history )
     else:
         return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

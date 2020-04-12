@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+{% block history_box %}
+    {% if history_list %}
+    <ul class="history_list">
+        {% for m in history_list %}
+            <li>{{ m }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}
+          
+
+{% block answer %}
+    <aside id="map_answer">
+        <p id="adress-answer">Bien sûr mon poussin ! La voici : {{adress_ans}}</p>
+        <p>Pour mieux te rendre compte regarde la carte ci-dessous: </p>
+        <div id="map"></div>
+            <script async type="text/javascript">
+            function initMap() {
+                var latlng = {lat: {{lat_ans}}, lng: {{lng_ans}}};
+                var markername = "ici";
+                var map = new google.maps.Map(document.getElementById('map'), {
+                center: latlng,
+                zoom: 17
+                });
+                var marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    title: markername
+                });
+            };
+            </script> 
+    </aside>
+    <aside id="wiki_answer">
+        <p >Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ? 
+            {{ summary }} <a href={{url}} target="_blank">[En savoir plus sur Wikipedia]</a></p>
+    </aside>
+{% endblock %}
+           
