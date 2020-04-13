@@ -1,2 +1,62 @@
 # Projet_7_GrandpapyBot
-Scholar program answering geographical questions in using googlemap et wikipedia API.
+										Projet_7_GrandpapyBot
+								Créez GrandPy Bot, le papy-robot
+								 OpenClassroom's project number 7
+										
+     Flask_Ajax_Heroku                           
+
+SUM UP: 
+	Projet_7_GrandpapyBot is a school project program answering geographical questions in using googlemap et wikipedia APIs.
+	It uses Python3 in Flask framework for collecting requests from a web formular deployed with Heroku.
+	Answer are construted from dtas collected with GoogleMap and Wikipedia APIs. 
+
+	In  Projet_7_GrandpapyBot te user have first to connect to https://projet-grandpapybot.herokuapp.com.
+		-Then ask a question to Papy Bot in the question area.
+		-Click on "soumettre ma question" or cpress "entry".
+		-Consult the thre answer.
+
+	The answer is composed of three parts:
+	-The adress.
+	-The GoogleMap map with marker for indicating the location.
+	-The Papy Bot story about the adress.
+
+	The question is also stock in an history log under le formular, for the session only.
+	There is no save fonction in this program.
+
+	Settings:
+	Settings are contained in the file "requirement.txt".
+
+	Running program:
+	For running this program on the web connect to https://projet-grandpapybot.herokuapp.com. 
+	For running it localy, install the requirements.txt settings then open the file "run.py".
+
+AUTHOR:
+T.Salgues.
+
+LICENCE:
+Projet_7_GrandpapyBot is a public project without any licence.
+
+CONVENTIONS:
+	Python code:
+		Python code respect the PEP8 convention.
+		Each class have its file.
+		
+		For docstring apply the following field
+		"""" <Description>
+		<Arguments>
+			Arg 1: type (default value, description)
+			Arg 2: type (default value, description)
+			...
+		<Return>
+			Return 1: type (default value, description)
+			Return 2: type (default value, description)
+			...
+		<Example>
+		"""
+
+CONTRIBUTIONs:
+Source code is on https://github.com/Thibault231/projet_7_grandpapybot.
+Use a  CONTRIBUTING.md type file to contribute.
+
+CREDITS:
+Special thanks for Openclassrooms website, Wikipedia and GoogleMap.

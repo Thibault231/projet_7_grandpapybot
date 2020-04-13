@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>       
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="utf-8"/> 
-
+    <head>  
+        <meta charset="utf-8" />      
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="website, encyclopedia, granpapybot, AJAX" />
         <meta name="author" content="salgues231">
         
-        <link href="{{ url_for('static', filename='book.gif') }}" rel="icon" type="image/gif" />
-        <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='pictures/book.gif') }}" rel="icon" type="image/gif" />
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
         <style>
         #loading{ display: none;}
-        .loading{display: inline !important}
+        .loading{display: inline !important;}
         </style>
 
         <script type="text/javascript">
@@ -29,7 +28,7 @@
 
   <body>
     <header class="row">
-            <p class="col-lg-2" id="logo"><img src="{{ url_for('static', filename='grandpapy.png') }}" alt="logo grandpapy"></p>
+            <p class="col-lg-2" id="logo"><img src="{{ url_for('static', filename='pictures/grandpapy.png') }}" alt="logo grandpapy"></p>
             <div class="col-sm-12 col-lg-10" id="title1">
                 <h1>Bienvenue chez GranPapy Bot</h1>
                 <p>Posez les questions que vous désirez à PapyBot. Il vous répondra avec précision, plus...quelques histoires supplémentaires.</p>
@@ -43,7 +42,7 @@
             <form class="my-question" action="" method="POST">
                 <label for="text-question">Ecrivez votre question ci-dessous</label>
                 <br/>
-                <input type="text" name="text-question" id="text-question"/>
+                <input type="text" name="text-question" id="text-question" value="Ma question à PapyBot"/>
                 <br/>
                 <input id="validate" type="submit" value="Soumettre ma question" onclick="gif_loader()"/>
             </form>
@@ -57,16 +56,20 @@
         <section class="col-xs-8 col-sm=8 col-lg-6" id="answer">
             <article>
                 <h2>Regarde par ici pour consulter la réponse de Grand PapyBot.</h2>
-                <p id="loading"><img  src="{{ url_for('static', filename='loading.gif') }}" alt="loading gif picture"></p>
+                <p id="loading"><img  src="{{ url_for('static', filename='pictures/loading.gif') }}" alt="loading gif picture"></p>
             </article>
             {% block answer %}{% endblock %}
         </section>
         
     </main>
 
-    <footer>
-        <p>Thibault SALGUES</p>
-        <p>Github link</p>
+    <footer class="row">
+        <p class="col-lg-8" id="author"><br/><br/> Auteur: Thibault SALGUES</p>
+        <div class="col-sm-8 col-lg-4" id="links">
+            <p ><a  href="https://github.com/Thibault231/projet_7_grandpapybot" target="_blank">Lien Github du projet</a></p>
+            <p ><a  href="https://trello.com/b/iHMxYr68/grandpapy-bot" target="_blank">Lien Trello vers le projet</a></p>
+            <p ><a  href="https://openclassrooms-student-center.github.io/alumnis/students/thibault-salgues.html" target="_blank">Retrouvez nous sur Alumnis</a></p>
+        </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="

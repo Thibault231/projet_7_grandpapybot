@@ -1,4 +1,4 @@
-html, body {
+html, body{
     height: 100%;
     margin: 0;
     padding: 0;
@@ -7,34 +7,29 @@ html, body {
     height : auto;
 }
 
-header
-{
+header{
     min-height : 20%;
     background-color: rgba(22, 56, 119, 0.8);
     text-align: center;
 }
 
-#title1
-{
+#title1{
     text-align: center;
 }
 
-h1
-{
+h1{
     font-weight: bold;
     text-align: center;
     text-decoration: underline;
     font-size: 3em;
 }
 
-main
-{
+main{
     min-height : 50%;
     margin: 10px 0px 20px 0px;
 }
 
-main section
-{
+main section{
     width: 50%;
 }
 
@@ -43,25 +38,39 @@ main section
     border: inset;
     resize: none;
     background-color: rgba(52, 126, 161, 0.26);
+    font-style: italic;
+    color: rgb(54, 37, 6);
 }
 
-.history_box {
+.history_box{
     width: 80%;
     border: 2px outset;
     background-color: rgba(52, 126, 161, 0.26);
     margin-top: 10px;
 }
 
-#map
-{
+#map{
     height: 400px;
     width: 600px;
 }
 
 footer{
-    min-height : 10%;
-    text-align: center;
+    min-height: 10%;
     background-color: rgba(22, 56, 119, 0.8);
+}
+
+#author{
+    width: 70%;
+    text-align: center;
+    text-decoration: none;
+    color: wheat;
+}
+
+#links{
+    width: 30%;
+    text-align: center;
+    text-decoration: none;
+    color: whitesmoke;
 }
 
 @media screen and (max-width: 767px) {

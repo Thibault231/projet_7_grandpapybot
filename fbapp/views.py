@@ -1,24 +1,30 @@
 # coding: utf-8
+"""[Rule the views of templates and dynamic interractions with them]
+"""
 from flask import Flask, render_template, request
 from fbapp.static.parser import Answer
 
-app = Flask(__name__)
-history=[]
+APP = Flask(__name__)
+HISTORY = []
 
-@app.route('/', methods=["GET", "POST"])
+@APP.route('/', methods=["GET", "POST"])
 def index():
-    
+    """[Rules the displays of views depending on
+    the requests methods]
+
+    Returns:
+        templates [.html] -- [templates for user views]
+    """
     if request.method == 'POST':
         question = Answer()
-        question.text_question = request.form['text-question']
-        history.append(question.text_question)
+        text_question = request.form['text-question']
+        HISTORY.append(text_question)
+        question.creating_map_infos(text_question)
         question.wiki_parsing()
-        question.creating_map_infos()
-        return render_template('response.html', summary=question.summary_answer, url=question.url_answer,
-         adress_ans=question.adress_answer, lat_ans=question.lat_answer, lng_ans=question.lng_answer,
-         history_list=history )
+        return render_template(
+            'response.html', summary=question.summary_answer,
+            url=question.url_answer, adress_ans=question.adress_answer,
+            lat_ans=question.lat_answer, lng_ans=question.lng_answer,
+            history_list=HISTORY)
     else:
         return render_template('index.html')
-
-if __name__ == "__main__":
-    app.run()
