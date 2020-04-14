@@ -10,7 +10,7 @@
     {% endif %}
 {% endblock %}
           
-
+{% block type_answer %}Grandpapy Bot a une réponse pour toi:{% endblock %}
 {% block answer %}
     <aside id="map_answer">
         <p id="adress-answer">Bien sûr mon poussin ! La voici : {{adress_ans}}</p>
@@ -34,7 +34,7 @@
     </aside>
     <aside id="wiki_answer">
         <p >Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ? 
-            {{ summary }} <a href={{url}} target="_blank">[En savoir plus sur Wikipedia]</a></p>
+            {{ summary }} <a class="btn btn-info" href={{url}} target="_blank">[En savoir plus sur Wikipedia]</a></p>
     </aside>
 {% endblock %}
            

@@ -29,12 +29,12 @@ main{
     margin: 10px 0px 20px 0px;
 }
 
-main section{
+section{
     width: 50%;
 }
 
 #text-question{
-    width: 80%;
+    height: 30px;
     border: inset;
     resize: none;
     background-color: rgba(52, 126, 161, 0.26);
@@ -43,7 +43,6 @@ main section{
 }
 
 .history_box{
-    width: 80%;
     border: 2px outset;
     background-color: rgba(52, 126, 161, 0.26);
     margin-top: 10px;
@@ -59,6 +58,14 @@ footer{
     background-color: rgba(22, 56, 119, 0.8);
 }
 
+.icon-r{
+    float: right;
+}
+
+.icon-l{
+    float: left;
+}
+
 #author{
     width: 70%;
     text-align: center;
@@ -68,8 +75,7 @@ footer{
 
 #links{
     width: 30%;
-    text-align: center;
-    text-decoration: none;
+    text-align: left;
     color: whitesmoke;
 }
 

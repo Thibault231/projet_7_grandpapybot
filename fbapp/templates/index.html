@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>  
-        <meta charset="utf-8" />      
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8" /> 
+        <title>GranPapy Bot</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="website, encyclopedia, granpapybot, AJAX" />
-        <meta name="author" content="salgues231">
         
         <link href="{{ url_for('static', filename='pictures/book.gif') }}" rel="icon" type="image/gif" />
-        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css" />
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
         <style>
-        #loading{ display: none;}
         .loading{display: inline !important;}
         </style>
-
-        <script type="text/javascript">
-        function gif_loader(){
-            document.getElementById('loading').classList.add("loading");
-        }
-        </script>
-        <title>GranPapy Bot</title>
-
     </head>
 
   <body>
@@ -37,17 +27,21 @@
     </header>
 
     <main class="row">
-        <section class="col-xs-8 col-sm=8 col-lg-6" id="question">
-            <h2>Hey Papybot j'ai une super question pour toi!</h2>
-            <form class="my-question" action="" method="POST">
+        <section class="col-xs-8 col-sm=8 col-lg-6 " id="question">
+                <h2 class="h2 {{success}}">Hey Papybot j'ai une super question!</h2>
+            <form class="my-question"  action="" method="POST">
                 <label for="text-question">Ecrivez votre question ci-dessous</label>
                 <br/>
-                <input type="text" name="text-question" id="text-question" value="Ma question à PapyBot"/>
-                <br/>
-                <input id="validate" type="submit" value="Soumettre ma question" onclick="gif_loader()"/>
+                <p class="d-flex justify-content-center">
+                <input class="col-lg-11" id="text-question" type="text"  name="text-question"  value="Ma question à PapyBot"/>
+                </p>
+                <p class="d-flex justify-content-center">
+                    <input class="btn btn-primary btn-warning" id="validate" type="submit"
+                    value="Soumettre ma question" onclick="gif_loader()"/>
+                    <span class="glyphicon glyphicon-ok-sign" style="color:#4f4;"></span>
+                </p>
             </form>
-            <div class="history_box">
-           
+            <div class="history_box col-lg-11">
                 <p>Retrouvez l'historique de vos questions ici</p> 
                 {% block history_box %}{% endblock %}
             </div>
@@ -55,8 +49,8 @@
 
         <section class="col-xs-8 col-sm=8 col-lg-6" id="answer">
             <article>
-                <h2>Regarde par ici pour consulter la réponse de Grand PapyBot.</h2>
-                <p id="loading"><img  src="{{ url_for('static', filename='pictures/loading.gif') }}" alt="loading gif picture"></p>
+                <h2 class="h2 {{success}}"> {% block type_answer %}Grandpapy Bot te répondra ci-dessous:{% endblock %}</h2>
+                <p id="loading" class="d-none"><img  src="{{ url_for('static', filename='pictures/loading.gif') }}" alt="loading gif picture"></p>
             </article>
             {% block answer %}{% endblock %}
         </section>
@@ -64,18 +58,30 @@
     </main>
 
     <footer class="row">
-        <p class="col-lg-8" id="author"><br/><br/> Auteur: Thibault SALGUES</p>
-        <div class="col-sm-8 col-lg-4" id="links">
-            <p ><a  href="https://github.com/Thibault231/projet_7_grandpapybot" target="_blank">Lien Github du projet</a></p>
-            <p ><a  href="https://trello.com/b/iHMxYr68/grandpapy-bot" target="_blank">Lien Trello vers le projet</a></p>
-            <p ><a  href="https://openclassrooms-student-center.github.io/alumnis/students/thibault-salgues.html" target="_blank">Retrouvez nous sur Alumnis</a></p>
+        <p class="col-xs-12 col-sm-12 col-lg-8" id="author"><br/><br/>
+            <img class="icon-r rounded-circle" src="{{ url_for('static', filename='pictures/wolf.png') }}" alt="logo perso">
+             Auteur: Thibault SALGUES</p>
+        <div class="col-xs-12 col-sm-12 col-lg-4" id="links">
+            <p class="icon-l rounded"><img  src="{{ url_for('static', filename='pictures/github.png') }}" alt="logo github">
+                <a class="btn btn-info" href="https://github.com/Thibault231/projet_7_grandpapybot"
+                target="_blank">Lien Github du projet</a></p>
+            <p class="icon-l rounded"><img src="{{ url_for('static', filename='pictures/trello.png') }}" alt="logo trello">
+                <a class="btn btn-info" href="https://trello.com/b/iHMxYr68/grandpapy-bot"
+                target="_blank">Lien Trello vers le projet</a></p>
+            <p class="icon-l rounded"><img src="{{ url_for('static', filename='pictures/alumnis.png') }}" alt="logo alumnis">
+                <a class="btn btn-info" href="https://openclassrooms-student-center.github.io/alumnis/students/thibault-salgues.html"
+                target="_blank">Retrouvez nous sur Alumnis</a></p>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+    integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63EmB7d3J1w_6axs28keyc0tVaxhsnIA&callback=initMap"
     async defer></script>
+
     </body>
 </html>
 
