@@ -25,6 +25,6 @@ def index():
             'response.html', summary=question.summary_answer,
             url=question.url_answer, adress_ans=question.adress_answer,
             lat_ans=question.lat_answer, lng_ans=question.lng_answer,
-            history_list=HISTORY, success="text-success")
+            history_list=HISTORY, success='text-success')
     else:
-        return render_template('index.html')
+        return render_template('index.html', success=' ')
