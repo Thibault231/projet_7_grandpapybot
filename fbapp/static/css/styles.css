@@ -58,24 +58,19 @@ footer{
     background-color: rgba(22, 56, 119, 0.8);
 }
 
-.icon-r{
-    float: right;
-}
-
 .icon-l{
     float: left;
 }
 
 #author{
-    width: 70%;
     text-align: center;
     text-decoration: none;
     color: wheat;
 }
 
 #links{
-    width: 30%;
     text-align: left;
+    text-decoration: none;
     color: whitesmoke;
 }
 

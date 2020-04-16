@@ -7,89 +7,150 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         <link href="{{ url_for('static', filename='pictures/book.gif') }}" rel="icon" type="image/gif" />
-        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css" />
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-        <style>
-            .loading{display: inline !important;}
-        </style>
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css" />
     </head>
 
-  <body>
-    <header class="row">
-            <p class="col-lg-2" id="logo"><img src="{{ url_for('static', filename='pictures/grandpapy.png') }}" alt="logo grandpapy"></p>
-            <div class="col-sm-12 col-lg-10" id="title1">
-                <h1>Bienvenue chez GranPapy Bot</h1>
-                <p>Posez les questions que vous désirez à PapyBot. Il vous répondra avec précision, plus...quelques histoires supplémentaires.</p>
-                <br/>
-            </div>
-    </header>
+    <body>
 
-    <main class="row">
-        <section class="col-xs-8 col-sm=8 col-lg-6 " id="question">
-                <h2 class="h2 {{success}}">Hey Papybot j'ai une super question!</h2>
-            <form class="my-question"  action="" method="POST">
-                <label for="text-question">Ecrivez votre question ci-dessous</label>
-                <br/>
-                <p class="d-flex justify-content-center">
-                <input class="col-lg-11" id="text-question" type="text"  name="text-question"  value="Ma question à PapyBot"/>
-                </p>
-                <p class="d-flex justify-content-center">
-                    <input class="btn btn-primary btn-warning" id="validate" type="submit"
-                    value="Soumettre ma question" onclick="gif_loader()"/>
-                    <span class="glyphicon glyphicon-ok-sign" style="color:#4f4;"></span>
-                </p>
-            </form>
-            <div class="history_box col-lg-11">
-                <p>Retrouvez l'historique de vos questions ici</p> 
-                {% block history_box %}{% endblock %}
-            </div>
-        </section>
+        <header class="row">
+                <p class="col-lg-2" id="logo"><img src="{{ url_for('static', filename='pictures/grandpapy.png') }}" alt="logo grandpapy"></p>
+                <div class="col-sm-12 col-lg-10" id="title1">
+                    <h1>Bienvenue chez GranPapy Bot</h1>
+                    <p>Posez les questions que vous désirez à PapyBot. Il vous répondra avec précision, plus...quelques histoires supplémentaires.</p>
+                    <br/>
+                </div>
+        </header>
 
-        <section class="col-xs-8 col-sm=8 col-lg-6" id="answer">
-            <article>
-                <h2 class="h2 {{success}}"> {% block type_answer %}Grandpapy Bot te répondra ci-dessous:{% endblock %}</h2>
-                <p class="d-none" id="loading"><img  src="{{ url_for('static', filename='pictures/loading.gif') }}" alt="loading gif picture"></p>
-            </article>
-            {% block answer %}{% endblock %}
-        </section>
+
+        <main class="row">
+
+            <section class="col-xs-8 col-sm=8 col-lg-6 " id="question">
+                    <h2 class="h2">Hey Papybot j'ai une super question!</h2>
+                <form id='my-question' action="/api/all">
+                    <label for="text-question">Ecrivez votre question ci-dessous</label>
+                    <br/>
+                    <div class="d-flex justify-content-center">
+                        <input class="col-lg-11" id="text-question" type="text"  name="text-question"  placeholder="Ma question à PapyBot"/>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <input class="btn btn-primary btn-warning" id="validate" type="submit" value="Soumettre ma question">                      
+                    </div>
+                </form>
+                <div class="history_box col-lg-11">
+                    <p>Retrouvez l'historique de vos questions ici</p> 
+                    <ul id="history_list"></ul>
+                </div>
+                <div id="result"></div>
+            </section>
+
+
+            <section class="col-xs-8 col-sm=8 col-lg-6" id="answer">
+                <article>
+                    <h2 class="h2"> <span id="h2_answer">Grandpapy Bot te répondra ci-dessous:</span> </h2>
+                    <p id="loading" class="d-none"><img  src="{{ url_for('static', filename='pictures/loading.gif') }}" alt="loading gif picture"></p>
+                </article>
+
+                <aside class="d-none" id="map_answer">
+                    <p id="adress-answer">
+                        Bien sûr mon poussin ! La voici : <span id='adress_ans'></span>
+                    </p>
+                    <p>
+                        Pour mieux te rendre compte regarde la carte ci-dessous:
+                    </p>
+                    <div class="d-none" id="map">
+                    </div>
+                </aside>
+
+                <aside class="d-none" id="wiki_answer">
+                    <br/><br/><p >Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ?</p>
+                    <span id='summary_ans'></span><br/>
+                    <a class="btn btn-info" id='url_ans' href="" target="_blank">[En savoir plus sur Wikipedia]</a>
+                    
+                </aside>
+            </section>
+            
+        </main>
+
+
+        <footer class="row">
+            <p class="col-xs-12 col-sm-12 col-lg-8" id="author"><br/><br/>
+                <img class="rounded-circle" src="{{ url_for('static', filename='pictures/wolf.png') }}" alt="logo perso">
+                Auteur: Thibault SALGUES
+            </p>
+            <div class="col-xs-12 col-sm-12 col-lg-4" id="links">
+                <ul class="list-group">
+                    <li class="list-group-item-primary">
+                        <p class="icon-l rounded"><img  src="{{ url_for('static', filename='pictures/github.png') }}" alt="logo github">
+                        <a class="btn btn-info" href="https://github.com/Thibault231/projet_7_grandpapybot"
+                        target="_blank">Lien Github du projet</a></p>
+                    </li>
+                    <li class="list-group-item-primary">
+                        <p class="icon-l rounded"><img src="{{ url_for('static', filename='pictures/trello.png') }}" alt="logo trello">
+                        <a class="btn btn-info" href="https://trello.com/b/iHMxYr68/grandpapy-bot"
+                        target="_blank">Lien Trello vers le projet</a></p>
+                    </li>
+                    <li class="list-group-item-primary">
+                        <p class="icon-l rounded"><img src="{{ url_for('static', filename='pictures/alumnis.png') }}" alt="logo alumnis">
+                        <a class="btn btn-info" href="https://openclassrooms-student-center.github.io/alumnis/students/thibault-salgues.html"
+                        target="_blank">Retrouvez nous sur Alumnis</a></p>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{KEY}}&callback=initMap"async defer></script>
+        <script>
+        function initMap(lattitude, longitude){
+            var latlng = {lat: lattitude , lng: longitude };
+            var markername = "C'est ici mon petit";
+            var map = new google.maps.Map(
+            document.getElementById('#map'),
+            {center: latlng, zoom: 17});
+            var marker = new google.maps.Marker({
+            position: latlng, map: map, title: markername
+            });
+        }
+
+        $(document).ready(function(){ 
+            $('#my-question').submit(function(event){
+                        event.preventDefault();
+                        
+                        $(".d-none").removeClass('d-none');
+                        
+                        var quest = $('#text-question').val();
+                        $("#history_list").append('<li>'+quest+'</li>');
+
+                        $.post( "/api/all", {question: quest}, function(data){
+                        var resp = $.parseJSON(data);
+                                    
+                        if (resp.success){
+                                    $( "#summary_ans" ).html( resp.summary );
+                                    $( "#url_ans").prop("href", resp.url);
+                                    $( "#adress_ans" ).html( resp.adress_ans );
+
+                                    $("#h2_answer").html( "Grandpapy a trouvé une réponse!" );
+                                    $(".h2").removeClass('text-warning').addClass('text-success');   
+                                    
+                        } else {
+                                    $( "#summary_ans" ).html( "Non, je plaisante, je n'ai pas grandi làbas." );
+                                    $( "#url_ans").prop("href", "https://fr.wikipedia.org/wiki/Lune");
+                                    $( "#adress_ans" ).html( "Nulpart sur Terre.<br/>Mais tu peux regarder sur la Lune!" );
+                                    
+                                    $("#map").addClass('d-none');
+                                    $("#h2_answer").html("Grandpapy n'a pas trouvé de réponse!" );
+                                    $(".h2").removeClass('text-success').addClass('text-warning');        
+                        }
+                        $("#loading").addClass('d-none');
+                        });
+            });
+        })
+        </script>
         
-    </main>
-
-    <footer class="row">
-        <p class="col-xs-12 col-sm-12 col-lg-8" id="author"><br/><br/>
-            <img class="icon-r rounded-circle" src="{{ url_for('static', filename='pictures/wolf.png') }}" alt="logo perso">
-             Auteur: Thibault SALGUES</p>
-        <div class="col-xs-12 col-sm-12 col-lg-4" id="links">
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <p class="icon-l rounded"><img  src="{{ url_for('static', filename='pictures/github.png') }}" alt="logo github">
-                    <a class="btn btn-info" href="https://github.com/Thibault231/projet_7_grandpapybot"
-                    target="_blank">Lien Github du projet</a></p>
-                </li>
-                <li class="list-group-item">
-                    <p class="icon-l rounded"><img src="{{ url_for('static', filename='pictures/trello.png') }}" alt="logo trello">
-                    <a class="btn btn-info" href="https://trello.com/b/iHMxYr68/grandpapy-bot"
-                    target="_blank">Lien Trello vers le projet</a></p>
-                </li>
-                <li class="list-group-item">
-                    <p class="icon-l rounded"><img src="{{ url_for('static', filename='pictures/alumnis.png') }}" alt="logo alumnis">
-                    <a class="btn btn-info" href="https://openclassrooms-student-center.github.io/alumnis/students/thibault-salgues.html"
-                    target="_blank">Retrouvez nous sur Alumnis</a></p>
-                </li>
-            </ul>
-        </div>
-    </footer>
-
-    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
-    integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63EmB7d3J1w_6axs28keyc0tVaxhsnIA&callback=initMap"
-    async defer></script>
-
     </body>
 </html>
 
