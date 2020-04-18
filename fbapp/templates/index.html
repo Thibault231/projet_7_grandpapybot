@@ -9,7 +9,7 @@
         <link href="{{ url_for('static', filename='pictures/book.gif') }}" rel="icon" type="image/gif" />
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
     </head>
 
     <body>
@@ -59,7 +59,7 @@
                     <p>
                         Pour mieux te rendre compte regarde la carte ci-dessous:
                     </p>
-                    <div class="d-none" id="map">
+                    <div id="map">
                     </div>
                 </aside>
 
@@ -104,52 +104,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key={{KEY}}&callback=initMap"async defer></script>
-        <script>
-        function initMap(lattitude, longitude){
-            var latlng = {lat: lattitude , lng: longitude };
-            var markername = "C'est ici mon petit";
-            var map = new google.maps.Map(
-            document.getElementById('#map'),
-            {center: latlng, zoom: 17});
-            var marker = new google.maps.Marker({
-            position: latlng, map: map, title: markername
-            });
-        }
-
-        $(document).ready(function(){ 
-            $('#my-question').submit(function(event){
-                        event.preventDefault();
-                        
-                        $(".d-none").removeClass('d-none');
-                        
-                        var quest = $('#text-question').val();
-                        $("#history_list").append('<li>'+quest+'</li>');
-
-                        $.post( "/api/all", {question: quest}, function(data){
-                        var resp = $.parseJSON(data);
-                                    
-                        if (resp.success){
-                                    $( "#summary_ans" ).html( resp.summary );
-                                    $( "#url_ans").prop("href", resp.url);
-                                    $( "#adress_ans" ).html( resp.adress_ans );
-
-                                    $("#h2_answer").html( "Grandpapy a trouvé une réponse!" );
-                                    $(".h2").removeClass('text-warning').addClass('text-success');   
-                                    
-                        } else {
-                                    $( "#summary_ans" ).html( "Non, je plaisante, je n'ai pas grandi làbas." );
-                                    $( "#url_ans").prop("href", "https://fr.wikipedia.org/wiki/Lune");
-                                    $( "#adress_ans" ).html( "Nulpart sur Terre.<br/>Mais tu peux regarder sur la Lune!" );
-                                    
-                                    $("#map").addClass('d-none');
-                                    $("#h2_answer").html("Grandpapy n'a pas trouvé de réponse!" );
-                                    $(".h2").removeClass('text-success').addClass('text-warning');        
-                        }
-                        $("#loading").addClass('d-none');
-                        });
-            });
-        })
-        </script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/first.js') }}"></script>
         
     </body>
 </html>

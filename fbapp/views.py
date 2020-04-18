@@ -31,71 +31,46 @@ def all():
         response [.json] -- [map and wiki infos]
     """
     if request.method == 'POST':
+        control = []
+        print('Connected to API: OK.')
+        control.append('Connected to API: OK.//')
         question_map = AnswerMap()
         question_wiki = AnswerWiki()
         text_question = request.form['question']
-        question_map.creating_map_infos(text_question)
-        if question_map.success:
-            question_wiki.wiki_parsing(question_map.adress_answer)
-            if question_wiki.success:
-                response = {'summary': question_wiki.summary_answer,
-                'url': question_wiki.url_answer, 'adress_ans': question_map.adress_answer,
-                'lat_ans': question_map.lat_answer, 'lng_ans': question_map.lng_answer,
-                'success': True}
+        print('Resquest received: OK.')
+        control.append('Resquest received: OK.//')
+
+        if  text_question != "":
+            print("Question content: OK.")
+            control.append('Question content: OK.//')
+            question_map.creating_map_infos(text_question)
+
+            if question_map.success:
+                print('GoogleMap response: OK.')
+                control.append('GoogleMap response: OK.//')
+                question_wiki.wiki_parsing(question_map.adress_answer)
+
+                if question_wiki.success:
+                    print('Wikipedia response: OK.')
+                    control.append('Wikipedia response: OK.//')
+                    response = {'summary': question_wiki.summary_answer,
+                    'url': question_wiki.url_answer, 'adress_ans': question_map.adress_answer,
+                    'lat_ans': question_map.lat_answer, 'lng_ans': question_map.lng_answer,
+                    'success': True, 'control': control}
+                else:
+                    print('Wikipedia response: Error.')
+                    control.append('Wikipedia response: Error.//')
+                    response = {'success': False, 'control': control}
+
+            else:
+                print('GoogleMap response: Error.')
+                control.append('GoogleMap response: Error.//')
+                response = {'success': False, 'control': control}
+
         else:
-            response = {'success': False}
+            print("Question content: empty.")
+            control.append('Question content: empty.//')
+            response = {'success': False, 'control': control}
         
-        response = json.dumps(response)
-        return  response 
-        
-@APP.route('/api/wiki', methods=["POST"])
-def wiki():
-    """[Rules the API side of the web site
-    for a 'POST' http-request. It return wikipédia informations
-    about the request after collecting and cleaning datas from
-    Wikipédia's API.]
-
-    Returns:
-        response [.json] -- [wiki infos]
-    """
-    if request.method == 'POST':
-        question = AnswerWiki()
-        self.text_question = request.form['text-question']
-        question.wiki_parsing(self.text_question)
-
-        if question_wiki.success:
-            response = {'summary': question.summary_answer,
-                'url': question.url_answer,'success': True}
-        else:
-            response = {'success': False}
-        
-        response = json.dumps(response)
-        return  response
-
-@APP.route('/api/map', methods=["POST"])
-def map():
-    """[Rules the API side of the web site
-    for a 'POST' http-request. It return wikipédia informations
-    about the request after collecting and cleaning datas from
-    GoogleMap's API.]
-
-    Returns:
-        response [.json] -- [géographical infos]
-    """
-    if request.method == 'POST':
-        question = AnswerMap()
-        text_question = request.form['question']
-        question.creating_map_infos(text_question)
-
-        if question_map.success:
-            response = {'adress_ans': question.adress_answer,
-                'lat_ans': question.lat_answer, 'lng_ans': question.lng_answer,
-                'success': True}
-        else:
-            response = {'success': False}
-        
-        response = json.dumps(response)
-        return  response
-
-if __name__ == "__main__":
-   a = AnswerWiki()
+    response = json.dumps(response)
+    return  response 

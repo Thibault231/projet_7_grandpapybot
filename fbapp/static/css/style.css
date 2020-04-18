@@ -49,8 +49,10 @@ section{
 }
 
 #map{
-    height: 400px;
-    width: 600px;
+    height:400px;
+    width: 100%;
+    border-style: dotted;
+    border-color: blueviolet;
 }
 
 footer{
