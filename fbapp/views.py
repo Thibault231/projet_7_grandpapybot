@@ -5,10 +5,10 @@ import json
 from flask import Flask, render_template, request
 from fbapp.static.python.answer_wiki import AnswerWiki
 from fbapp.static.python.answer_map import AnswerMap
-from fbapp.static.python.answer import Answer
 from config import KEYS
 
 APP = Flask(__name__)
+
 
 @APP.route('/', methods=["GET"])
 def index():
@@ -18,7 +18,8 @@ def index():
     Returns:
         index.html [template] -- [templates for user side]
     """
-    return render_template('index.html', KEY= KEYS['MAP_KEY'])
+    return render_template('index.html', KEY=KEYS['MAP_KEY'])
+
 
 @APP.route('/api/all', methods=["POST"])
 def all():
@@ -40,7 +41,7 @@ def all():
         print('Resquest received: OK.')
         control.append('Resquest received: OK.//')
 
-        if  text_question != "":
+        if text_question != "":
             print("Question content: OK.")
             control.append('Question content: OK.//')
             question_map.creating_map_infos(text_question)
@@ -53,10 +54,13 @@ def all():
                 if question_wiki.success:
                     print('Wikipedia response: OK.')
                     control.append('Wikipedia response: OK.//')
-                    response = {'summary': question_wiki.summary_answer,
-                    'url': question_wiki.url_answer, 'adress_ans': question_map.adress_answer,
-                    'lat_ans': question_map.lat_answer, 'lng_ans': question_map.lng_answer,
-                    'success': True, 'control': control}
+                    response = {
+                        'summary': question_wiki.summary_answer,
+                        'url': question_wiki.url_answer,
+                        'adress_ans': question_map.adress_answer,
+                        'lat_ans': question_map.lat_answer,
+                        'lng_ans': question_map.lng_answer,
+                        'success': True, 'control': control}
                 else:
                     print('Wikipedia response: Error.')
                     control.append('Wikipedia response: Error.//')
@@ -71,6 +75,6 @@ def all():
             print("Question content: empty.")
             control.append('Question content: empty.//')
             response = {'success': False, 'control': control}
-        
+
     response = json.dumps(response)
-    return  response 
+    return response

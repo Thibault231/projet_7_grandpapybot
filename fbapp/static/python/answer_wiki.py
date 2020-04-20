@@ -2,7 +2,6 @@
 """[Rules the class answer_wiki.AnswerWiki]
 """
 import wikipedia
-from config import KEYS
 from fbapp.static.python.answer import Answer
 
 
@@ -56,6 +55,9 @@ class AnswerWiki(Answer):
             self.url_answer = ans_page.url
             self.summary_answer = wikipedia.summary(answer[0])
             self.success = True
+       
+        return ans_page
+
     def wiki_parsing(self, text_question):
         """Modify self.keywords attribut in calling _create_keywords()
         function, then rule the _wiki_answer() function with it. It create

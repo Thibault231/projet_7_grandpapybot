@@ -6,13 +6,16 @@
      Flask_Ajax_Heroku                           
 
 SUM UP: 
-	Projet_7_GrandpapyBot is a school project program answering geographical questions in using googlemap et wikipedia APIs.
-	It uses Python3 in Flask framework for collecting requests from a web formular deployed with Heroku.
-	Answer are construted from dtas collected with GoogleMap and Wikipedia APIs. 
+	Projet_7_GrandpapyBot is a school project program answering geographical questions in using Flask framework.
+	Once running the run.py a "get" request is send to the programme displaying a front interface on the web browser.
+	After completing and validating the web formular a "post" request is send to the programm wich clean the datas and call Googlemap's
+	and Wikipedia's API's to contruct a correct answer.
+	The answer is then return to the front part and prettyly displayed by javascript.
+	This programme is also deployed on heroku. 
 
 	In  Projet_7_GrandpapyBot te user have first to connect to https://projet-grandpapybot.herokuapp.com.
 		-Then ask a question to Papy Bot in the question area.
-		-Click on "soumettre ma question" or cpress "entry".
+		-Click on "soumettre ma question" or press "entry".
 		-Consult the thre answer.
 
 	The answer is composed of three parts:
@@ -59,4 +62,4 @@ Source code is on https://github.com/Thibault231/projet_7_grandpapybot.
 Use a  CONTRIBUTING.md type file to contribute.
 
 CREDITS:
-Special thanks for Openclassrooms website, Wikipedia and GoogleMap.
+Special thanks for Openclassrooms, Wikipedia and GoogleMap.
