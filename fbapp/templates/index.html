@@ -46,7 +46,7 @@
             </section>
 
 
-            <section class="col-xs-8 col-sm=8 col-lg-6" id="answer">
+            <section class="col-xs-8 col-sm-8 col-lg-6" id="answer">
                 <article>
                     <h2 class="h2"> <span id="h2_answer">Grandpapy Bot te répondra ci-dessous:</span> </h2>
                     <p id="loading" class="d-none"><img  src="{{ url_for('static', filename='pictures/loading.gif') }}" alt="loading gif picture"></p>
@@ -103,8 +103,8 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key={{KEY}}&callback=initMap"async defer></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/first.js') }}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{KEY}}&callback=initMap" async defer></script>
+        <script src="{{ url_for('static', filename='js/first.js') }}"></script>
         
     </body>
 </html>

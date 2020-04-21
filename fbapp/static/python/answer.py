@@ -51,3 +51,23 @@ class Answer:
         for element in word_to_delete:
             wordslist.remove(element)
         self.keywords = wordslist[:]
+
+    def create_keywords_linked(self, text_question):
+        """Use datas return by'create_keywords' to create
+        a simple string with words separated by space.
+
+        Args:
+        self {parser.Answer} -- [Use specificaly self.keywords attribut]
+        text_question {STR} -- [Use to be a sentence with a least
+        one usefull identifiable word]
+
+        Return:
+        No return.
+        Modify self.keywords attribut.
+
+        Example:
+        self._create_keywords(text_question)
+
+        """
+        self.create_keywords(text_question)
+        self.keywords = " ".join(self.keywords)

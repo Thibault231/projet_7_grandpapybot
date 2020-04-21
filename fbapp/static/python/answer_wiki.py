@@ -55,7 +55,7 @@ class AnswerWiki(Answer):
             self.url_answer = ans_page.url
             self.summary_answer = wikipedia.summary(answer[0])
             self.success = True
-       
+
         return ans_page
 
     def wiki_parsing(self, text_question):

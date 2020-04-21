@@ -21,6 +21,13 @@ def test_answerwiki_attributs():
         and wiki.success is False
 
 
+def test_connection_wikipedia_api():
+    """Test the correct connection to wikipedia API.
+    """
+    response = wikipedia.search('toulouse')
+    assert isinstance(response, list)
+
+
 def test_wiki_request_request(monkeypatch):
     """Test that the function 'wiki_request' once received a list
     of string arguments, transforms it in a simple string element,
@@ -71,10 +78,12 @@ def test_wiki_parsing():
     question = AnswerWiki()
     text_question = '7 Cité Paradis, 75010 Paris, France'
     question.wiki_parsing(text_question)
-    summary = 'La cité Paradis est une voie publique située dans le 10e arrondissement de Paris.'
+    summary = 'La cité Paradis est une voie publique' + \
+        ' située dans le 10e arrondissement de Paris.'
+    url = "https://fr.wikipedia.org/wiki/Cit%C3%A9_Paradis"
     assert question.text_question == '' and\
         question.keywords == ['Cité', 'Paradis', 'Paris', 'France']\
         and question.success is True\
         and question.wiki_request == 'Cité Paradis Paris France' and\
-        question.url_answer == "https://fr.wikipedia.org/wiki/Cit%C3%A9_Paradis"\
+        question.url_answer == url\
         and question.summary_answer == summary

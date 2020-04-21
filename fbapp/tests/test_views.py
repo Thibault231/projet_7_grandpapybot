@@ -34,7 +34,8 @@ def test_true_api_all_post():
         "https://projet-grandpapybot.herokuapp.com/api/all",
         data={"question": "openclassrooms"})
     file = response.json()
-    summary = 'La cité Paradis est une voie publique située dans le 10e arrondissement de Paris.'
+    summary = 'La cité Paradis est une voie publique située dans' + \
+        ' le 10e arrondissement de Paris.'
     assert file['summary'] == summary\
         and file['url'] == 'https://fr.wikipedia.org/wiki/Cit%C3%A9_Paradis'\
         and file['adress_ans'] == '7 Cité Paradis, 75010 Paris, France'\

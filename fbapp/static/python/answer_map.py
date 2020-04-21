@@ -48,11 +48,13 @@ class AnswerMap(Answer):
         self._google_map_request ()
         """
         map_request = requests.get(
-            ('https://maps.googleapis.com/maps/api/place/textsearch/json?query={}&key={}')
-            .format(self.keywords_map, KEYS['MAP_KEY']))
+            ('https://maps.googleapis.com/maps/api/place/' +
+                ('textsearch/json?query={}&key={}').format(
+                    self.keywords_map, KEYS['MAP_KEY']))
+            )
         file = map_request.json()
         if file['results'] == []:
-            self.adress_answer= "Aucune adresse de trouvée sur googlemap"
+            self.adress_answer = "Aucune adresse de trouvée sur googlemap"
         else:
             self.adress_answer = file['results'][0]['formatted_address']
             self.lat_answer = file['results'][0]['geometry']['location']['lat']
