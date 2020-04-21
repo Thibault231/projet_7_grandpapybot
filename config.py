@@ -3,7 +3,7 @@
 """[Stocks global constants for all python's files]
 """
 KEYS = {
-    "MAP_KEY": "AIzaSyA63EmB7d3J1w_6axs28keyc0tVaxhsnIA",
+    "MAP_KEY": "Your GOOGLEMAP's API KEY ",
     "TAB_LIST": [
         "!", "?", ".", "-", ",", "'", "0", "1", "2", "3",
         "4", "5", "6", "7", "8", "9"],

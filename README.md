@@ -31,7 +31,12 @@ SUM UP:
 
 	Running program:
 	For running this program on the web connect to https://projet-grandpapybot.herokuapp.com. 
-	For running it localy, install the requirements.txt settings then open the file "run.py".
+
+	For running it localy, install the requirements.txt settings.
+	A GoogleMap's API key is also requiered. Get it on https://developers.google.com/maps/documentation/maps-static/get-api-key?hl=fr
+	Open the file config.py and insert your GoogleMap's key in the line 6. replace "Your GOOGLEMAP's API KEY" by your key.
+	Then run the file "run.py" to start the program.
+	The client side is being displayed at port:5000.
 
 AUTHOR:
 T.Salgues.
