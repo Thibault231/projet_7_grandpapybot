@@ -1,16 +1,27 @@
 # coding: utf-8
+"""Test the Answer.py module.
+"""
+import sys
+import os
+sys.path.append(os.path.abspath(''))
 from fbapp.static.python.answer import Answer
 
 
-def test_AnswerMap_attributs():
-    Quest = Answer()
-    assert type(Quest.text_question) == str and Quest.keywords == []\
-        and Quest.success is False
+def test_answermap_attributs():
+    """Test the correct creation of Answer's object attributs.
+    """
+    quest = Answer()
+    assert isinstance(quest.text_question, str) and quest.keywords == []\
+        and quest.success is False
 
 
 def test_create_keywords():
-    Quest = Answer()
+    """Test that the function 'create_keywords' transform a string object
+    in a list of string objects deleting unsignificant element according
+    to a stop_word_list.
+    """
+    quest = Answer()
     text_question = "Salut GrandPy ! Est-ce que tu connais\
          l'adresse d'OpenClassrooms à Paris ?"
-    Quest._create_keywords(text_question)
-    assert Quest.keywords == ['OpenClassrooms', 'Paris']
+    quest.create_keywords(text_question)
+    assert quest.keywords == ['OpenClassrooms', 'Paris']

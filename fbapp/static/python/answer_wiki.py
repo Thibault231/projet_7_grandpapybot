@@ -27,7 +27,7 @@ class AnswerWiki(Answer):
         self.url_answer = str()
         self.summary_answer = str()
 
-    def _wiki_answer(self, keywords):
+    def wiki_answer(self, keywords):
         """Create a specific key words list from self.keywords then
         use it for collecting datas from Wikipedia's API
         (sum up and wikipedia page url).
@@ -74,5 +74,5 @@ class AnswerWiki(Answer):
         self.wiki_parsing()
 
         """
-        self._create_keywords(text_question)
-        self._wiki_answer(self.keywords)
+        self.create_keywords(text_question)
+        self.wiki_answer(self.keywords)

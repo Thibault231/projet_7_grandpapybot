@@ -30,7 +30,7 @@ class AnswerMap(Answer):
         self.lat_answer = float()
         self.lng_answer = float()
 
-    def _google_map_request(self):
+    def google_map_request(self):
         """Create a specific key words list from self.keywords then
         use it for collecting datas from GoogleMap's API
         (location and formatted adress).
@@ -77,6 +77,6 @@ class AnswerMap(Answer):
 
         """
         self.text_question = text_question
-        self._create_keywords(self.text_question)
+        self.create_keywords(self.text_question)
         self.keywords_map = "+".join(self.keywords).lower()
-        self._google_map_request()
+        self.google_map_request()

@@ -24,7 +24,7 @@ class Answer:
         self.keywords = []
         self.success = False
 
-    def _create_keywords(self, text_question):
+    def create_keywords(self, text_question):
         """Create a key words list of 'str' from a 'str' element
         in removing signs, numbers and useless words.
 

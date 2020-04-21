@@ -1,4 +1,4 @@
-function initMap(lat,lon ) {
+function initMap(lat,lon) {
     var map = null;
     map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(lat, lon), 
@@ -35,22 +35,22 @@ $(document).ready(function(){
 
                   if (resp.success){
                               summary_ans.html( resp.summary );
-                              $( "#url_ans").prop("href", resp.url);
-                              $( "#adress_ans" ).html( resp.adress_ans );
+                              $("#url_ans").prop("href", resp.url);
+                              $("#adress_ans" ).text( resp.adress_ans );
                               lat = resp.lat_ans;
                               lon = resp.lng_ans;
                               initMap(lat, lon);
-                              $("#h2_answer").html( "Grandpapy a trouvé une réponse!" );
+                              $("#h2_answer").text( "Grandpapy a trouvé une réponse!" );
                               $(".h2").removeClass('text-warning').addClass('text-success');   
                               
                   } else {
-                              $( "#summary_ans" ).html( "Non, je plaisante, je n'ai pas grandi làbas." );
-                              $( "#url_ans").prop("href", "https://fr.wikipedia.org/wiki/Lune");
-                              $( "#adress_ans" ).html( "Nulpart sur Terre.<br/>Mais tu peux regarder sur la Lune!" );
+                              $("#summary_ans" ).text( "Non, je plaisante, je n'ai pas grandi làbas." );
+                              $("#url_ans").prop("href", "https://fr.wikipedia.org/wiki/Lune");
+                              $("#adress_ans" ).text( "Nulpart sur Terre.<br/>Mais tu peux regarder sur la Lune!" );
                               var lat = 28.488677;
                               var lon = -80.5750128;
                               initMap(lat, lon);
-                              $("#h2_answer").html("Grandpapy n'a pas trouvé de réponse!" );
+                              $("#h2_answer").text("Grandpapy n'a pas trouvé de réponse!" );
                               $(".h2").removeClass('text-success').addClass('text-warning');        
                   }
                   $("#loading").addClass('d-none');
