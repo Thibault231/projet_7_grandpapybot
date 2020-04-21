@@ -27,7 +27,7 @@
         <main class="row">
 
             <section class="col-xs-8 col-sm=8 col-lg-6 " id="question">
-                    <h2 class="h2">Hey Papybot j'ai une super question!</h2>
+                <h2 class="h2">Hey Papybot j'ai une super question!</h2>
                 <form id='my-question' action="/api/all">
                     <label for="text-question">Ecrivez votre question ci-dessous</label>
                     <br/>
@@ -47,12 +47,10 @@
 
 
             <section class="col-xs-8 col-sm-8 col-lg-6" id="answer">
-                <article>
-                    <h2 class="h2"> <span id="h2_answer">Grandpapy Bot te répondra ci-dessous:</span> </h2>
-                    <p id="loading" class="d-none"><img  src="{{ url_for('static', filename='pictures/loading.gif') }}" alt="loading gif picture"></p>
-                </article>
+                <h2 class="h2"> <span id="h2_answer">Grandpapy Bot te répondra ci-dessous:</span> </h2>
+                <p id="loading" class="d-none"><img  src="{{ url_for('static', filename='pictures/loading.gif') }}" alt="loading gif picture"></p>
 
-                <aside class="d-none" id="map_answer">
+                <article class="d-none" id="map_answer">
                     <p id="adress-answer">
                         Bien sûr mon poussin ! La voici : <span id='adress_ans'></span>
                     </p>
@@ -61,7 +59,7 @@
                     </p>
                     <div id="map">
                     </div>
-                </aside>
+                </article>
 
                 <aside class="d-none" id="wiki_answer">
                     <br/><br/><p >Mais t'ai-je déjà raconté l'histoire de ce quartier qui m'a vu en culottes courtes ?</p>
