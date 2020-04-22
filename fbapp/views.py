@@ -22,7 +22,7 @@ def index():
 
 
 @APP.route('/api/all', methods=["POST"])
-def all():
+def api_all():
     """[Rules the API side of the web site
     using a 'POST' http-request. It return usefull informations
     for ajax method in index.html after collecting and cleaning
@@ -41,7 +41,7 @@ def all():
         if text_question != "":
             print("Question content: OK.")
             question_map.creating_map_infos(text_question)
-            
+
             if question_map.keywords != []:
                 print('Keywords found: OK.')
                 if question_map.success:
@@ -56,25 +56,31 @@ def all():
                             'adress_ans': question_map.adress_answer,
                             'lat_ans': question_map.lat_answer,
                             'lng_ans': question_map.lng_answer,
-                            'success': True, 'status-code': '200-Response complete'}
+                            'success': True, 'status-code': '200-Response\
+                                 complete'}
                     else:
                         print('Wikipedia response: Empty.')
-                        response = {'success': False,
-                         'status-code':'Error 404-no wikipedia page linked to the adress'}
+                        response = {
+                            'success': False,
+                            'status-code': 'Error 404-no wikipedia\
+                                 page linked to the adress'}
 
                 else:
                     print('GoogleMap response: Error.')
-                    response = {'success': False,
-                     'status-code': 'Error-404-place not found'}
+                    response = {
+                        'success': False,
+                        'status-code': 'Error-404-place not found'}
 
             else:
                 print("Keywords found: None")
-                response = {'success': False,
-                 'status-code': 'Error-400-no keyword in the question'}
+                response = {
+                    'success': False,
+                    'status-code': 'Error-400-no keyword in the question'}
         else:
             print("Question content: empty.")
-            response = {'success': False,
-             'status-code': 'Error-400-no question'}
+            response = {
+                'success': False,
+                'status-code': 'Error-400-no question'}
 
     response = json.dumps(response)
     return response

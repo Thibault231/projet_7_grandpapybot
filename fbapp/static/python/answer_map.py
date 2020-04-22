@@ -49,8 +49,8 @@ class AnswerMap(Answer):
         """
         map_request = requests.get(
             ('https://maps.googleapis.com/maps/api/place/' +
-                ('textsearch/json?query={}&key={}').format(
-                    self.keywords_map, KEYS['MAP_KEY']))
+             ('textsearch/json?query={}&key={}').format(
+                 self.keywords_map, KEYS['MAP_KEY']))
             )
         file = map_request.json()
         if file['results'] == []:
