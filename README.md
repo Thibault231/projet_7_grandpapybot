@@ -1,11 +1,11 @@
-# Projet_7_GrandpapyBot
-										Projet_7_GrandpapyBot
+# Projet_7_GrandpapyBot										Projet_7_GrandpapyBot
 								Créez GrandPy Bot, le papy-robot
 								 OpenClassroom's project number 7
 										
-     Flask_Ajax_Heroku                           
+     									Flask_Ajax_Heroku 
+										 Python 3.8.1                          
 
-SUM UP: 
+#SUM UP: 
 	Projet_7_GrandpapyBot is a school project program answering geographical questions in using Flask framework.
 	Once running the run.py a "get" request is send to the programme displaying a front interface on the web browser.
 	After completing and validating the web formular a "post" request is send to the programm wich clean the datas and call Googlemap's
@@ -26,25 +26,28 @@ SUM UP:
 	The question is also stock in an history log under le formular, for the session only.
 	There is no save fonction in this program.
 
-	Settings:
+	##Settings:
 	Settings are contained in the file "requirement.txt".
 
-	Running program:
+	##Running program:
+	###On the Web:
 	For running this program on the web connect to https://projet-grandpapybot.herokuapp.com. 
 
+	###On local:
 	For running it localy, install the requirements.txt settings.
 	A GoogleMap's API key is also requiered. Get it on https://developers.google.com/maps/documentation/maps-static/get-api-key?hl=fr
-	Open the file config.py and insert your GoogleMap's key in the line 6. replace "Your GOOGLEMAP's API KEY" by your key.
+	Then create a file '.env' and put inside "API_KEY"="your-google-api-key".
 	Then run the file "run.py" to start the program.
 	The client side is being displayed at port:5000.
 
-AUTHOR:
+#AUTHOR:
 T.Salgues.
 
-LICENCE:
-Projet_7_GrandpapyBot is a public project without any licence.
+#LICENCE:
+Projet_7_GrandpapyBot is a public project with a free licence.
+For more information read the file: license
 
-CONVENTIONS:
+#CONVENTIONS:
 	Python code:
 		Python code respect the PEP8 convention.
 		Each class have its file.
@@ -62,9 +65,9 @@ CONVENTIONS:
 		<Example>
 		"""
 
-CONTRIBUTIONs:
+#CONTRIBUTIONs:
 Source code is on https://github.com/Thibault231/projet_7_grandpapybot.
 Use a  CONTRIBUTING.md type file to contribute.
 
-CREDITS:
-Special thanks for Openclassrooms, Wikipedia and GoogleMap.
+#CREDITS:
+Special thanks for Cyril.C, Openclassrooms, Wikipedia and GoogleMap.

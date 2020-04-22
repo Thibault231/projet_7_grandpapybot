@@ -7,8 +7,10 @@ from io import BytesIO
 import json
 import urllib.request
 import wikipedia
+# Import a new path for pytest
 sys.path.append(os.path.abspath(''))
 from fbapp.static.python.answer_wiki import AnswerWiki
+from config import KEYS
 
 
 def test_answerwiki_attributs():
@@ -22,17 +24,24 @@ def test_answerwiki_attributs():
 
 
 def test_connection_wikipedia_api():
-    """Test the correct connection to wikipedia API.
+    """Test the correct connection to wikipedia API
+    with right keyword.
     """
-    response = wikipedia.search('toulouse')
+    response = wikipedia.search(KEYS['TOWN_TEST'])
     assert isinstance(response, list)
+
+def test_wrong_connection_wikipedia_api():
+    """Test the correct connection to wikipedia API
+    with right keyword.
+    """
+    response = wikipedia.search('ssssffff1111')
+    assert response == [] 
 
 
 def test_wiki_request_request(monkeypatch):
     """Test that the function 'wiki_request' once received a list
     of string arguments, transforms it in a simple string element,
     stocked in "wiki_request" attribut.
-    This attribut have to be send to wikipedia's API.
     """
     results = [
         'Capitole de Toulouse', 'Toulouse 1 University Capitole',
@@ -51,8 +60,8 @@ def test_wiki_request_request(monkeypatch):
 
 
 def test_wiki_request_ans(monkeypatch):
-    """Test that the function 'wiki_request' once send the "wiki_request"
-    to wikipedia's API select the first element of the response.
+    """Test that the function 'wiki_request' once sending the
+    "wiki_request" to wikipedia's API select the first element of the response.
     """
     results = [
         'Capitole de Toulouse', 'Toulouse 1 University Capitole',

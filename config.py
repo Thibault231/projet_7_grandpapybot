@@ -1,9 +1,16 @@
 # coding: utf-8
-
 """[Stocks global constants for all python's files]
 """
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 KEYS = {
-    "MAP_KEY": "Your GOOGLEMAP's API KEY ",
+    "MAP_KEY": os.getenv("API_KEY"),
+    "TOWN_TEST": "Lyon",
+    "LAT_TEST": 45.764043,
+    "LNG_TEST": 4.835659,
+    "RIGHT_STATUS_TEST": 200,
     "TAB_LIST": [
         "!", "?", ".", "-", ",", "'", "0", "1", "2", "3",
         "4", "5", "6", "7", "8", "9"],
