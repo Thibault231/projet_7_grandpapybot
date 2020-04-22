@@ -1,5 +1,5 @@
 env/
-fbapp/tests
+fbapp/tests/
 # Xojo (formerly REALbasic and Real Studio)
 Builds*
 *.debug
