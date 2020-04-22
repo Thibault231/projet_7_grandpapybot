@@ -3,9 +3,10 @@
 """
 import os
 from dotenv import load_dotenv
+load_dotenv()
 
 KEYS = {
-    "MAP_KEY": "AIzaSyA63EmB7d3J1w_6axs28keyc0tVaxhsnIA",
+    "MAP_KEY": os.getenv("API_KEY"),
     "TOWN_TEST": "Lyon",
     "LAT_TEST": 45.764043,
     "LNG_TEST": 4.835659,
