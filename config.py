@@ -13,7 +13,7 @@ KEYS = {
     "RIGHT_STATUS_TEST": 200,
     "TAB_LIST": [
         "!", "?", ".", "-", ",", "'", "0", "1", "2", "3",
-        "4", "5", "6", "7", "8", "9"],
+        "#","<",">","4", "5", "6", "7", "8", "9"],
     "STOP_WORDS_LIST": [
         "a", "abord", "absolument", "adresse", "afin", "ah", "ai",
         "aie", "ailleurs", "ainsi", "ait", "allaient", "allo",

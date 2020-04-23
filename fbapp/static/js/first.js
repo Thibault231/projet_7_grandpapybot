@@ -27,7 +27,7 @@ $(document).ready(function(){
                   $(".d-none").removeClass('d-none');
                   
                   var quest = $('#text-question').val();
-                  $("#history_list").append('<li>'+quest+'</li>');
+                  $("#history_list").append($("<li>").text(quest));
 
                   $.post( "/api/all", {question: quest}, function(data){
                   var resp = $.parseJSON(data);
