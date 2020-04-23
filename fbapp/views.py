@@ -56,14 +56,14 @@ def api_all():
                             'adress_ans': question_map.adress_answer,
                             'lat_ans': question_map.lat_answer,
                             'lng_ans': question_map.lng_answer,
-                            'success': True, 'status-code': '200-Response\
-                                 complete'}
+                            'success': True,
+                            'status-code': '200-Response complete'}
                     else:
                         print('Wikipedia response: Empty.')
                         response = {
                             'success': False,
-                            'status-code': 'Error 404-no wikipedia\
-                                 page linked to the adress'}
+                            'status-code': 'Error 404-no wikipedia' + \
+                                 'page linked to the adress'}
 
                 else:
                     print('GoogleMap response: Error.')
