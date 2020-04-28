@@ -1,24 +1,26 @@
 function initMap(lat,lon) {
-    var map = null;
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: new google.maps.LatLng(lat, lon), 
-        zoom: 17, 
-        mapTypeId: google.maps.MapTypeId.ROADMAP, 
-        mapTypeControl: true,
-        scrollwheel: true, 
-        mapTypeControlOptions: {
-            style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR 
-        },
-        navigationControl: true, 
-        navigationControlOptions: {
-            style: google.maps.NavigationControlStyle.ZOOM_PAN 
-        }
-    });
-    var marker = new google.maps.Marker({
-        position: {lat: lat, lng: lon},
-        map: map
-    });
-}
+    if (lat != undefined && lon != undefined) {
+        var map = null;
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: new google.maps.LatLng(lat, lon), 
+            zoom: 17, 
+            mapTypeId: google.maps.MapTypeId.ROADMAP, 
+            mapTypeControl: true,
+            scrollwheel: true, 
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR 
+            },
+            navigationControl: true, 
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.ZOOM_PAN 
+            }
+        });
+        var marker = new google.maps.Marker({
+            position: {lat: lat, lng: lon},
+            map: map
+        });
+    };
+};
 
 $(document).ready(function(){ 
       $('#my-question').submit(function(event){

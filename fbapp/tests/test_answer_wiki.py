@@ -89,7 +89,7 @@ def test_wiki_parsing():
     text_question = '7 Cité Paradis, 75010 Paris, France'
     question.wiki_parsing(text_question)
     summary = 'La cité Paradis est une voie publique' + \
-        ' située dans le 10e arrondissement de Paris.'
+        ' située dans le 10e arrondissement de Paris.\n\n'
     url = "https://fr.wikipedia.org/wiki/Cit%C3%A9_Paradis"
     assert question.text_question == '' and\
         question.keywords == ['Cité', 'Paradis', 'Paris', 'France']\
